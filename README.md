@@ -1,4 +1,4 @@
-# my-project
+# Messier 101
 
 ## Project setup
 ```
