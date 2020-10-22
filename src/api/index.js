@@ -41,7 +41,7 @@ async function getProject (owner, repo, token) {
  * @param  {object} project : current project
  * @return {blob} : A zip file containing the vuejs sources of the passed project
  */
-async function generateSources (project) {
+async function generateVueSources (project) {
   try {
     return await axios.post('/api/generate', project, { responseType: 'blob' })
   } catch (e) {
@@ -53,6 +53,6 @@ async function generateSources (project) {
 const api = {
   saveProject,
   getProject,
-  generateSources
+  generateVueSources
 }
 export default api

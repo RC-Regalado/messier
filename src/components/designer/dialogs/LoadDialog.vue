@@ -19,7 +19,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import { loadProject } from '@/store/types'
+import { loadVueProject } from '@/store/types'
 import dialogPolyfill from 'dialog-polyfill'
 
 export default {
@@ -77,7 +77,7 @@ export default {
     },
 
     onLoad () {
-      this.loadProject({ origin: 'github', userName: this.owner, repoName: this.repo })
+      this.loadVueProject({ origin: 'github', userName: this.owner, repoName: this.repo })
       this.closeDialog()
     },
 
@@ -94,7 +94,7 @@ export default {
       this.$el.close()
     },
 
-    ...mapActions([loadProject])
+    ...mapActions([loadVueProject])
   }
 }
 </script>

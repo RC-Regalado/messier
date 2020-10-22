@@ -62,7 +62,7 @@ const projectActions = {
     localforage.setItem('gh-last-saved', projectB64)
     localforage.setItem('gh-repo-name', repoName)
 
-    const resp = await api.saveVueggProject(project, owner, repoName, token)
+    const resp = await api.saveProject(project, owner, repoName, token)
 
     if (resp) {
       await dispatch(types.checkLastSaved)

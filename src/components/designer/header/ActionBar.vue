@@ -16,11 +16,11 @@
       </icon>
     </button>
 
-<!--    <router-link :to="{name: 'preview'}">-->
-<!--      <button v-tooltip="'Preview'" class="action-btn">-->
-<!--        <icon icon="system/actions/preview" width="24" height="24" color="#2b6a73"></icon>-->
-<!--      </button>-->
-<!--    </router-link>-->
+    <!--    <router-link :to="{name: 'preview'}">-->
+    <!--      <button v-tooltip="'Preview'" class="action-btn">-->
+    <!--        <icon icon="system/actions/preview" width="24" height="24" color="#2b6a73"></icon>-->
+    <!--      </button>-->
+    <!--    </router-link>-->
 
     <div class="separator"></div>
 
@@ -29,7 +29,7 @@
       <icon :data="assets.a_delete" width="24" height="24" color="#2b6a73"></icon>
     </button>
 
-<!--    <a>Hello</a>-->
+    <!--    <a>Hello</a>-->
     <v-row>
       <v-menu
         bottom
@@ -54,13 +54,13 @@
             </v-list-item-title>
           </v-list-item>
           <v-divider></v-divider>
-          <v-list-item key="1" >
-            <v-list-item-title>
-              <label>
-                <input type="file" ref="inputOpenLocal" @change="openLocalFile" :value="fileValue" accept=".gg"/>
-                Computer
-              </label>
-            </v-list-item-title>
+          <v-list-item key="1">
+            <v-file-input
+              type="file"
+              ref="inputOpenLocal"
+              @change="openLocalFile"
+              accept=".mm"
+            />
           </v-list-item>
         </v-list>
       </v-menu>
@@ -87,43 +87,20 @@
             </v-list-item-title>
           </v-list-item>
           <v-divider></v-divider>
-          <v-list-item key="1" >
-            <v-list-item-title>
+          <v-list-item key="1">
+            <v-btn text v-on:click="this.downloadProject">
               Project (.mm)
-            </v-list-item-title>
+            </v-btn>
           </v-list-item>
-          <v-list-item key="2" >
-            <v-list-item-title>
+          <v-list-item key="2">
+            <v-btn text v-on:click="this.downloadVueSources">
               Vue sources (.zip)
-            </v-list-item-title>
+            </v-btn>
           </v-list-item>
-        </v-list>
-      </v-menu>
-      <v-menu>
-        <template>
-          <v-btn v-tooltip="'Download...'" class="action-btn" :disabled="isLoading" @click="showDownloadMenu">
-            <icon :data="assets.download" width="24" height="24" color="#2b6a73"></icon>
-          </v-btn>
-        </template>
-        <v-list ref="downloadMenu" @select="onSelectDownload">
-          <v-list-item disabled>Download:</v-list-item>
-          <v-divider></v-divider>
-          <v-list-item>Vuegg project (.gg)</v-list-item>
-          <v-list-item>Vue sources (.zip)</v-list-item>
         </v-list>
       </v-menu>
     </v-row>
-<!--    <mcw-menu-anchor>-->
-<!--      <mcw-menu ref="loadFromMenu" @select="onSelectLoadFrom">-->
-<!--        <mcw-menu-item disabled>Open project:</mcw-menu-item>-->
-<!--        &lt;!&ndash;        <mcw-menu-divider></mcw-menu-divider>&ndash;&gt;-->
-<!--        <mcw-menu-item>-->
-<!--          <input type="file" ref="inputOpenLocal" @change="openLocalFile" :value="fileValue" accept=".gg"/>-->
-<!--          Computer-->
-<!--        </mcw-menu-item>-->
-<!--        <mcw-menu-item>GitHub</mcw-menu-item>-->
-<!--      </mcw-menu>-->
-<!--    </mcw-menu-anchor>-->
+
     <button v-tooltip="saveBtnTitle" class="action-btn" @click="$root.$emit('open-upload-dialog')"
             :disabled="!isLoggedIn || !hasChanges || (isLoggedIn && isLoading)"
     >
@@ -144,7 +121,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import { downloadProject, downloadVueSources, loadProject } from '@/store/types'
+import { downloadProject, downloadVueSources, loadVueProject } from '@/store/types'
 import assets from '@/assets'
 
 export default {
@@ -153,6 +130,11 @@ export default {
     return {
       fileValue: null,
       assets: assets
+    }
+  },
+  props: {
+    value: {
+      type: [String, Object]
     }
   },
   computed: {
@@ -173,24 +155,8 @@ export default {
     })
   },
   methods: {
-    showDownloadMenu () {
-      this.$refs.downloadMenu.show()
-    },
-    onSelectDownload (selected) {
-      const PROJECT = 1
-      const SOURCES = 2
-
-      switch (selected.index) {
-        case PROJECT:
-          this.downloadProject()
-          break
-        case SOURCES:
-          this.downloadVueSources()
-          break
-      }
-    },
-    showLoadFromMenu () {
-      this.$refs.loadFromMenu.show()
+    test () {
+      console.log('C++')
     },
     onSelectLoadFrom (selected) {
       const PC = 1
@@ -206,15 +172,18 @@ export default {
           break
       }
     },
-    openLocalFile (event) {
-      const file = event.target.files[0]
+    openLocalFile (file) {
+      // const file = event.file
       if (!file) return
 
       const reader = new FileReader()
-      reader.onload = e => this.loadProject({ origin: 'pc', content: e.target.result })
+      reader.onload = e => this.loadVueProject({
+        origin: 'pc',
+        content: e.target.result
+      })
       reader.readAsText(file)
     },
-    ...mapActions([downloadProject, downloadVueSources, loadProject])
+    ...mapActions([downloadProject, downloadVueSources, loadVueProject])
   }
 }
 </script>

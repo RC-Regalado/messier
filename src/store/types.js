@@ -30,7 +30,7 @@ export const downloadVueSources = 'downloadVueSources'
 export const uploadVueSourcesToGH = 'uploadVueSourcesToGH'
 export const checkLastSaved = 'checkLastSaved'
 export const syncLocal = 'syncLocal'
-export const loadProject = 'loadProject'
+export const loadVueProject = 'loadVueProject'
 export const clearProject = 'clearProject'
 
 export const savePageAndClose = 'savePageAndClose'
@@ -109,7 +109,7 @@ const types = {
   uploadProjectToGH,
   checkLastSaved,
   syncLocal,
-  loadProject,
+  loadVueProject,
   clearProject,
 
   savePageAndClose,

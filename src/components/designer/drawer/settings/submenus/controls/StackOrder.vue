@@ -2,15 +2,18 @@
   <div class="wrapper">
     <span class="label">zIndex: {{ zIndex }}</span>
     <div class="icon-bar">
-      <icon v-bind="flip_auto"
-               @click.native="$emit('change', 'auto')" v-tooltip="'auto'">
-      </icon>
-      <icon v-bind="flip_front"
-               @click.native="$emit('change', (zIndex !== 'auto') ? (zIndex + 1) : 1)">
-      </icon>
-      <icon v-bind="flip_back"
-               @click.native="$emit('change', (zIndex !== 'auto' && zIndex > 0) ? (zIndex - 1) : 0)">
-      </icon>
+      <v-btn text @click.native="$emit('change', 'auto')" v-tooltip="'auto'">
+        <icon v-bind="flip_auto">
+        </icon>
+      </v-btn>
+      <v-btn text @click.native="$emit('change', (zIndex !== 'auto') ? (zIndex + 1) : 1)">
+        <icon v-bind="flip_front">
+        </icon>
+      </v-btn>
+      <v-btn text @click.native="$emit('change', (zIndex !== 'auto' && zIndex > 0) ? (zIndex - 1) : 0)">
+        <icon v-bind="flip_back">
+        </icon>
+      </v-btn>
     </div>
   </div>
 </template>
