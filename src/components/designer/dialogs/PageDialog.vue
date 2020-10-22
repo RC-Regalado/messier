@@ -2,17 +2,17 @@
   <dialog>
     <p class="page-dialog__title" :title="dialogTitle">{{dialogTitle}}</p>
     <div class="page-dialog__content">
-      <mcw-textfield v-model="name" label="Name" @input="checkName" :helptext="nameError"
+      <v-text-field v-model="name" label="Name" @input="checkName" :helptext="nameError"
         minlength="1" helptext-validation helptext-persistent required
         class="page-dialog__input" :class="{'mdc-text-field--invalid': nameError}"/>
 
-      <mcw-textfield v-model="path" label="Path" @input="checkPath" :helptext="pathError"
+      <v-text-field v-model="path" label="Path" @input="checkPath" :helptext="pathError"
         minlength="1" helptext-validation helptext-persistent required
         class="page-dialog__input" :class="{'mdc-text-field--invalid': pathError}"/>
     </div>
     <div class="page-dialog__actions">
-      <mcw-button @click="savePageAndClose({id, name, path})" :disabled="!valid">Save</mcw-button>
-      <mcw-button @click="_togglePageDialog({isOpen: false, isNew: pageDialog.isNew})">Cancel</mcw-button>
+      <v-btn @click="savePageAndClose({id, name, path})" :disabled="!valid">Save</v-btn>
+      <v-btn @click="_togglePageDialog({isOpen: false, isNew: pageDialog.isNew})">Cancel</v-btn>
     </div>
   </dialog>
 </template>

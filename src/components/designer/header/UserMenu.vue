@@ -1,5 +1,6 @@
 <template>
   <div class="user-menu__wrapper">
+
     <mcw-menu-anchor v-if="loggedUser">
       <button class="avatar-btn" @click="showUserMenu">
         <img :src="loggedUser.avatar_url" alt="User avatar" height="100%" width="100%" draggable="false"/>

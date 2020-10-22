@@ -2,17 +2,17 @@
   <dialog>
     <p class="load-dialog__title">Load a vuegg project from Github</p>
     <div class="load-dialog__content">
-      <mcw-textfield v-model="owner" label="Owner" @input="checkOwner" :helptext="ownerError"
+      <v-text-field v-model="owner" label="Owner" @input="checkOwner" :helptext="ownerError"
         minlength="1" helptext-validation helptext-persistent required
         class="load-dialog__input"  :class="{'mdc-text-field--invalid': ownerError}"/>
 
-      <mcw-textfield v-model="repo" label="Repository" @input="checkRepo" :helptext="repoError"
+      <v-text-field v-model="repo" label="Repository" @input="checkRepo" :helptext="repoError"
         minlength="1" helptext-validation helptext-persistent required
         class="load-dialog__input"  :class="{'mdc-text-field--invalid': repoError}"/>
     </div>
     <div class="load-dialog__actions">
-      <mcw-button @click="onLoad" unelevated :disabled="!valid">Load</mcw-button>
-      <mcw-button @click="closeDialog">Cancel</mcw-button>
+      <v-btn @click="onLoad" unelevated :disabled="!valid">Load</v-btn>
+      <v-btn @click="closeDialog">Cancel</v-btn>
     </div>
   </dialog>
 </template>

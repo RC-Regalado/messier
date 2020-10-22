@@ -1,14 +1,14 @@
 /*
   Basic elements (HTML5 Elements):
-  - PARENT -> egglement, [containegg]
+  - PARENT -> element, [container]
  */
 const basicElements = [
   // DIV
   {
     name: 'div',
     type: 'div',
-    egglement: true,
-    containegg: true,
+    element: true,
+    container: true,
     width: 300,
     height: 300,
     attrs: {
@@ -28,8 +28,8 @@ const basicElements = [
   {
     name: 'table',
     type: 'table',
-    egglement: true,
-    wrappegg: true,
+    element: true,
+    wrapper: true,
     width: 550,
     minWidth: 250,
     height: 300,
@@ -219,7 +219,7 @@ const basicElements = [
   {
     name: 'date',
     type: 'input',
-    egglement: true,
+    element: true,
     width: 200,
     height: 40,
     attrs: {
@@ -237,7 +237,7 @@ const basicElements = [
   {
     name: 'input',
     type: 'input',
-    egglement: true,
+    element: true,
     width: 300,
     height: 40,
     attrs: {
@@ -255,13 +255,14 @@ const basicElements = [
     name: 'button',
     type: 'button',
     text: 'Button',
-    egglement: true,
+    element: true,
     width: 200,
     height: 40,
     attrs: {},
     styles: {
       overflow: 'hidden',
-      'text-overflow': 'ellipsis'
+      'text-overflow': 'ellipsis',
+      'background-color': '#eeeeee'
     },
     classes: {}
   },
@@ -270,7 +271,7 @@ const basicElements = [
   {
     name: 'checkbox',
     type: 'input',
-    egglement: true,
+    element: true,
     width: 40,
     height: 40,
     attrs: {
@@ -284,7 +285,7 @@ const basicElements = [
   {
     name: 'radio',
     type: 'input',
-    egglement: true,
+    element: true,
     width: 40,
     height: 40,
     attrs: {
@@ -299,8 +300,8 @@ const basicElements = [
   {
     name: 'select',
     type: 'select',
-    egglement: true,
-    wrappegg: true,
+    element: true,
+    wrapper: true,
     width: 200,
     height: 40,
     attrs: {},
@@ -335,7 +336,7 @@ const basicElements = [
     iconName: 'icon',
     name: 'icon',
     type: 'i',
-    egglement: true,
+    element: true,
     text: 'insert_emoticon',
     width: 32,
     height: 32,
@@ -355,7 +356,7 @@ const basicElements = [
     name: 'link',
     type: 'a',
     text: 'Link',
-    egglement: true,
+    element: true,
     width: 200,
     height: 40,
     attrs: {
@@ -374,7 +375,7 @@ const basicElements = [
     name: 'text',
     type: 'span',
     text: 'Text',
-    egglement: true,
+    element: true,
     width: 150,
     height: 25,
     attrs: {},
@@ -389,7 +390,7 @@ const basicElements = [
   {
     name: 'image',
     type: 'img',
-    egglement: true,
+    element: true,
     width: 50,
     height: 44.44,
     attrs: {

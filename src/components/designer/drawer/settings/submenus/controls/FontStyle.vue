@@ -1,21 +1,28 @@
 <template>
   <div class="icon-bar">
-    <icon v-bind="bold"
-             @click.native="onToggleProp('font-weight', 'bold', isBold)"
-             :color="isBold ? 'rgba(0,0,0,.87)' : 'rgba(0,0,0,.38)'">
-    </icon>
-    <icon v-bind="italic"
-             @click.native="onToggleProp('font-style', 'italic', isItalic)"
-             :color="isItalic ? 'rgba(0,0,0,.87)' : 'rgba(0,0,0,.38)'">
-    </icon>
-    <icon v-bind="underline"
-             @click.native="onToggleProp('text-decoration', 'underline', isUnderlined)"
-             :color="isUnderlined ? 'rgba(0,0,0,.87)' : 'rgba(0,0,0,.38)'">
-    </icon>
-    <icon v-bind="strikethrough"
-             @click.native="onToggleProp('text-decoration', 'line-through', isStriked)"
-             :color="isStriked ? 'rgba(0,0,0,.87)' : 'rgba(0,0,0,.38)'">
-    </icon>
+    <v-row>
+      <v-btn text @click.native="onToggleProp('font-weight', 'bold', isBold)">
+        <icon v-bind="bold"
+              :color="isBold ? 'rgba(0,0,0,.87)' : 'rgba(0,0,0,.38)'">
+        </icon>
+      </v-btn>
+      <v-btn text @click.native="onToggleProp('font-style', 'italic', isItalic)">
+        <icon v-bind="italic"
+              :color="isItalic ? 'rgba(0,0,0,.87)' : 'rgba(0,0,0,.38)'">
+        </icon>
+      </v-btn>
+    </v-row>
+    <v-row>
+      <v-btn text @click.native="onToggleProp('text-decoration', 'underline', isUnderlined)">
+        <icon v-bind="underline"
+              :color="isUnderlined ? 'rgba(0,0,0,.87)' : 'rgba(0,0,0,.38)'"></icon>
+      </v-btn>
+      <v-btn text @click.native="onToggleProp('text-decoration', 'line-through', isStriked)">
+        <icon v-bind="strikethrough"
+              :color="isStriked ? 'rgba(0,0,0,.87)' : 'rgba(0,0,0,.38)'">
+        </icon>
+      </v-btn>
+    </v-row>
   </div>
 </template>
 
@@ -81,7 +88,10 @@ export default {
   },
   methods: {
     onToggleProp (prop, val, isOn) {
-      this.$emit('change', { prop, value: (isOn ? 'inherit' : val) })
+      this.$emit('change', {
+        prop,
+        value: (isOn ? 'inherit' : val)
+      })
     }
   }
 }

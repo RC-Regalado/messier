@@ -1,10 +1,10 @@
 <template>
   <div class="layout-container">
     <div class="edit-view">
-      <mcw-linear-progress v-show="loading" class="linear-loader" accent indeterminate></mcw-linear-progress>
+      <v-progress-linear v-show="loading" class="linear-loader" accent indeterminate></v-progress-linear>
       <header101 :scroll0="notScrolled"></header101>
 
-<!--      <drawer></drawer>-->
+      <drawer></drawer>
 
       <main id="main" role="main" @scroll="scrollFunction">
         <main101></main101>
@@ -16,7 +16,7 @@
             <confirm-dialog></confirm-dialog>
 
             <block-loader></block-loader>
-            <mcw-snackbar :dismisses-on-action="false"/>
+            <v-snackbar :dismisses-on-action="false"/>
     </div>
   </div>
 </template>
@@ -26,7 +26,7 @@ import { mapState, mapActions } from 'vuex'
 import { checkAuth, checkLastSaved, rebaseSelectedElements } from '@/store/types'
 
 import Header101 from '@/components/designer/header'
-// import Drawer from '@/components/designer/drawer'
+import Drawer from '@/components/designer/drawer'
 import Main101 from '@/components/designer/main'
 import BlockLoader from '@/components/designer/common/loader/BlockLoader'
 import PageDialog from '@/components/designer/dialogs/PageDialog'
@@ -36,7 +36,7 @@ import ConfirmDialog from '@/components/designer/dialogs/ConfirmDialog'
 
 export default {
   name: 'designer',
-  components: { Header101, Main101, BlockLoader, PageDialog, LoadDialog, UploadDialog, ConfirmDialog },
+  components: { Header101, Main101, BlockLoader, PageDialog, LoadDialog, UploadDialog, ConfirmDialog, Drawer },
   data: function () {
     return {
       notScrolled: true

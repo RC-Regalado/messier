@@ -13,7 +13,7 @@ export default {
     const elementO = (this.elem.global) ? { ...this.elem, ...this.componentRef, id: this.elem.id } : this.elem
 
     let styles = elementO.styles
-    if (this.isPlain && elementO.egglement) {
+    if (this.isPlain && elementO.element) {
       styles = {
         ...elementO.styles,
         position: 'absolute',
@@ -35,10 +35,10 @@ export default {
       attrs: {
         id: elementO.id,
         'data-global': elementO.global,
-        'data-egglement': elementO.egglement,
-        'data-containegg': elementO.containegg,
-        'data-componegg': elementO.componegg,
-        'data-wrappegg': elementO.wrappegg,
+        'data-element': elementO.element,
+        'data-container': elementO.container,
+        'data-component': elementO.component,
+        'data-wrapper': elementO.wrapper,
         ...elementO.attrs
       }
     }
@@ -51,7 +51,7 @@ export default {
         children.push(createElement(StageEl, {
           props: {
             elem: child,
-            isPlain: elementO.componegg || elementO.wrappegg || this.isPlain
+            isPlain: elementO.component || elementO.wrapper || this.isPlain
           }
         }))
       }

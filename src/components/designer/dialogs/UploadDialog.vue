@@ -4,13 +4,13 @@
     <div class="upload-dialog__content">
       <span>{{owner}}/{{repo}}</span>
 
-      <mcw-textfield v-model="repo" label="Repository" @input="checkRepo" :helptext="repoError"
+      <v-text-field v-model="repo" label="Repository" @input="checkRepo" :helptext="repoError"
         minlength="1" helptext-validation helptext-persistent required
         class="upload-dialog__input"  :class="{'mdc-text-field--invalid': repoError}"/>
     </div>
     <div class="upload-dialog__actions">
-      <mcw-button @click="onUpload" unelevated :disabled="!valid">Upload</mcw-button>
-      <mcw-button @click="closeDialog">Cancel</mcw-button>
+      <v-btn @click="onUpload" unelevated :disabled="!valid">Upload</v-btn>
+      <v-btn @click="closeDialog">Cancel</v-btn>
     </div>
   </dialog>
 </template>

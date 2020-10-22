@@ -1,6 +1,6 @@
 <template>
   <div class="slider__wrapper" v-tooltip.left="{content: label + ' (' + currentValue + ')', delay: 0, offset: 0}">
-    <mcw-slider :min="min" :max="max" :step="step" v-model="currentValue" layout-on="show-settings"/>
+    <v-slider :min="min" :max="max" :step="step" v-model="currentValue" layout-on="show-settings"/>
     <icon v-show="(icon !== '')" :data="icon" color="rgba(0,0,0,.87)"></icon>
   </div>
 </template>

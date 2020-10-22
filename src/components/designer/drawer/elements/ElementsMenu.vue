@@ -9,7 +9,7 @@
           @dragstart="e => dragstartHandler(e, element)"
           @click="e => addItemToStage(e, element)"
         >
-          <icon :data="'system/elements/'+element.name" width="24" height="24" color="rgba(0,0,0,.87)"></icon>
+          <icon :data="assets[element.name]" width="24" height="24" color="rgba(0,0,0,.87)"></icon>
           <span>{{element.displayName || element.name}}</span>
         </div>
       </div>
@@ -24,7 +24,7 @@
           @dragstart="e => dragstartHandler(e, mdComp)"
           @click="e => addItemToStage(e, mdComp)"
         >
-          <icon :data="'system/elements/'+mdComp.iconName" width="24" height="24" color="rgba(0,0,0,.87)"></icon>
+          <icon :data="assets[mdComp.iconName]" width="24" height="24" color="rgba(0,0,0,.87)"></icon>
           <span>{{mdComp.displayName || mdComp.name}}</span>
         </div>
       </div>
@@ -38,9 +38,9 @@ import { registerElement } from '@/store/types'
 
 import basicElements from '@/assets/BasicElements'
 import materialComponents from '@/assets/MaterialComponents'
-// import mockComponents from '@/assets/MockComponents'
 import MenuToggle from '@/components/designer/common/MenuToggle'
-
+import assets from '@/assets'
+// import mockComponents from '@/assets/MockComponents'
 // import '@/assets/icons/system/elements/'
 
 export default {
@@ -49,7 +49,8 @@ export default {
   data: function () {
     return {
       elements: basicElements,
-      mdComponents: materialComponents
+      mdComponents: materialComponents,
+      assets: assets
       // components: mockComponents
     }
   },

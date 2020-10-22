@@ -26,7 +26,7 @@ export default {
   name: 'zoom-menu',
   props: {
     zoom: {
-      type: String
+      type: Number
     },
     zoom_in: {
       type: Object,

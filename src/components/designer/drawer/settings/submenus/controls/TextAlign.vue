@@ -1,21 +1,29 @@
 <template>
   <div class="icon-bar">
-    <icon v-bind="align_left"
-             @click.native="onToggleProp('left', isAlignedLeft)"
-             :color="isAlignedLeft ? 'rgba(0,0,0,.87)' : 'rgba(0,0,0,.38)'">
-    </icon>
-    <icon v-bind="align_right"
-             @click.native="onToggleProp('right', isAlignedRight)"
-             :color="isAlignedRight ? 'rgba(0,0,0,.87)' : 'rgba(0,0,0,.38)'">
-    </icon>
-    <icon v-bind="align_center"
-             @click.native="onToggleProp('center', isCentered)"
-             :color="isCentered ? 'rgba(0,0,0,.87)' : 'rgba(0,0,0,.38)'">
-    </icon>
-    <icon v-bind="align_justify"
-             @click.native="onToggleProp('justify', isJustified)"
-             :color="isJustified ?'rgba(0,0,0,.87)' : 'rgba(0,0,0,.38)'">
-    </icon>
+    <v-row>
+      <v-btn text @click.native="onToggleProp('left', isAlignedLeft)">
+        <icon v-bind="align_left"
+              :color="isAlignedLeft ? 'rgba(0,0,0,.87)' : 'rgba(0,0,0,.38)'">
+        </icon>
+      </v-btn>
+      <v-btn text @click.native="onToggleProp('right', isAlignedRight)">
+        <icon v-bind="align_right"
+              :color="isAlignedRight ? 'rgba(0,0,0,.87)' : 'rgba(0,0,0,.38)'">
+        </icon>
+      </v-btn>
+    </v-row>
+    <v-row>
+      <v-btn text @click.native="onToggleProp('center', isCentered)">
+        <icon v-bind="align_center"
+              :color="isCentered ? 'rgba(0,0,0,.87)' : 'rgba(0,0,0,.38)'">
+        </icon>
+      </v-btn>
+      <v-btn text @click.native="onToggleProp('justify', isJustified)">
+        <icon v-bind="align_justify"
+              :color="isJustified ?'rgba(0,0,0,.87)' : 'rgba(0,0,0,.38)'">
+        </icon>
+      </v-btn>
+    </v-row>
   </div>
 </template>
 

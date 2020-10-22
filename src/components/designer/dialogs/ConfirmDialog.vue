@@ -8,8 +8,8 @@
       </p>
     </div>
     <div class="confirm-dialog__actions">
-      <mcw-button @click="onConfirm" class="confirm-dialog__delete-btn" unelevated>Delete</mcw-button>
-      <mcw-button @click="closeDialog">Cancel</mcw-button>
+      <v-btn @click="onConfirm" class="confirm-dialog__delete-btn" unelevated>Delete</v-btn>
+      <v-btn @click="closeDialog">Cancel</v-btn>
     </div>
   </dialog>
 </template>

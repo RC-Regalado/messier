@@ -29,33 +29,101 @@
       <icon :data="assets.a_delete" width="24" height="24" color="#2b6a73"></icon>
     </button>
 
-    <mcw-menu-anchor>
-      <button v-tooltip="'Open...'" class="action-btn" :disabled="isLoading" @click="showLoadFromMenu">
-        <icon :data="assets.folder" width="24" height="24" color="#2b6a73"></icon>
-      </button>
-      <mcw-menu ref="loadFromMenu" @select="onSelectLoadFrom">
-        <mcw-menu-item disabled>Open project:</mcw-menu-item>
-        <!--        <mcw-menu-divider></mcw-menu-divider>-->
-        <mcw-menu-item>
-          <input type="file" ref="inputOpenLocal" @change="openLocalFile" :value="fileValue" accept=".gg"/>
-          Computer
-        </mcw-menu-item>
-        <mcw-menu-item>GitHub</mcw-menu-item>
-      </mcw-menu>
-    </mcw-menu-anchor>
+<!--    <a>Hello</a>-->
+    <v-row>
+      <v-menu
+        bottom
+        origin="center center"
+        transition="scale-transition"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            icon
+            v-bind="attrs"
+            v-on="on"
+            v-tooltip="'Abrir...'"
+          >
+            <icon :data="assets.folder" width="32" heigth="32" color="#2b6a73"></icon>
+          </v-btn>
+        </template>
 
-    <mcw-menu-anchor>
-      <button v-tooltip="'Download...'" class="action-btn" :disabled="isLoading" @click="showDownloadMenu">
-        <icon :data="assets.download" width="24" height="24" color="#2b6a73"></icon>
-      </button>
-      <mcw-menu ref="downloadMenu" @select="onSelectDownload">
-        <mcw-menu-item disabled>Download:</mcw-menu-item>
-        <!--        <mcw-menu-divider></mcw-menu-divider>-->
-        <mcw-menu-item>Vuegg project (.gg)</mcw-menu-item>
-        <mcw-menu-item>Vue sources (.zip)</mcw-menu-item>
-      </mcw-menu>
-    </mcw-menu-anchor>
+        <v-list>
+          <v-list-item disabled key="0">
+            <v-list-item-title>
+              Open project:
+            </v-list-item-title>
+          </v-list-item>
+          <v-divider></v-divider>
+          <v-list-item key="1" >
+            <v-list-item-title>
+              <label>
+                <input type="file" ref="inputOpenLocal" @change="openLocalFile" :value="fileValue" accept=".gg"/>
+                Computer
+              </label>
+            </v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+      <v-menu
+        bottom
+        origin="center left"
+        transition="scale-transition"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            icon
+            v-bind="attrs"
+            v-on="on"
+            v-tooltip="'Descargar...'"
+          >
+            <icon :data="assets.download" width="24" height="24" color="#2b6a73"></icon>
+          </v-btn>
+        </template>
 
+        <v-list>
+          <v-list-item disabled key="0">
+            <v-list-item-title>
+              Descargar
+            </v-list-item-title>
+          </v-list-item>
+          <v-divider></v-divider>
+          <v-list-item key="1" >
+            <v-list-item-title>
+              Project (.mm)
+            </v-list-item-title>
+          </v-list-item>
+          <v-list-item key="2" >
+            <v-list-item-title>
+              Vue sources (.zip)
+            </v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+      <v-menu>
+        <template>
+          <v-btn v-tooltip="'Download...'" class="action-btn" :disabled="isLoading" @click="showDownloadMenu">
+            <icon :data="assets.download" width="24" height="24" color="#2b6a73"></icon>
+          </v-btn>
+        </template>
+        <v-list ref="downloadMenu" @select="onSelectDownload">
+          <v-list-item disabled>Download:</v-list-item>
+          <v-divider></v-divider>
+          <v-list-item>Vuegg project (.gg)</v-list-item>
+          <v-list-item>Vue sources (.zip)</v-list-item>
+        </v-list>
+      </v-menu>
+    </v-row>
+<!--    <mcw-menu-anchor>-->
+<!--      <mcw-menu ref="loadFromMenu" @select="onSelectLoadFrom">-->
+<!--        <mcw-menu-item disabled>Open project:</mcw-menu-item>-->
+<!--        &lt;!&ndash;        <mcw-menu-divider></mcw-menu-divider>&ndash;&gt;-->
+<!--        <mcw-menu-item>-->
+<!--          <input type="file" ref="inputOpenLocal" @change="openLocalFile" :value="fileValue" accept=".gg"/>-->
+<!--          Computer-->
+<!--        </mcw-menu-item>-->
+<!--        <mcw-menu-item>GitHub</mcw-menu-item>-->
+<!--      </mcw-menu>-->
+<!--    </mcw-menu-anchor>-->
     <button v-tooltip="saveBtnTitle" class="action-btn" @click="$root.$emit('open-upload-dialog')"
             :disabled="!isLoggedIn || !hasChanges || (isLoggedIn && isLoading)"
     >

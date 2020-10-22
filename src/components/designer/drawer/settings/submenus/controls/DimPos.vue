@@ -1,32 +1,32 @@
 <template>
 <div class="content-wrapper">
   <div v-if="hasDim" class="element-set element-set__left" :class="{'no-check': !hasPos}">
-    <mcw-textfield v-model="h" label="Height" :disabled="(h === 'auto')" dense/>
+    <v-text-field v-model="h" label="Height" :disabled="(h === 'auto')" dense/>
     <input v-if="hasPos" type="checkbox" :checked="!isNaN(parseInt(h))" @change="onCheckChanges('height')"/>
   </div>
 
   <div v-if="hasDim" class="element-set element-set__right" :class="{'no-check': !hasPos}">
-    <mcw-textfield v-model="w" label="Width" :disabled="(w === 'auto')" dense/>
+    <v-text-field v-model="w" label="Width" :disabled="(w === 'auto')" dense/>
     <input v-if="hasPos" type="checkbox" :checked="!isNaN(parseInt(w))" @change="onCheckChanges('width')"/>
   </div>
 
   <div v-if="hasPos" class="element-set element-set__left">
-    <mcw-textfield v-model="t" label="Top" :disabled="(t === 'auto')" dense/>
+    <v-text-field v-model="t" label="Top" :disabled="(t === 'auto')" dense/>
     <input type="checkbox" :checked="!isNaN(parseInt(t))" @change="onCheckChanges('top')"/>
   </div>
 
   <div v-if="hasPos" class="element-set element-set__right">
-    <mcw-textfield v-model="l" label="Left" :disabled="(l === 'auto')" dense/>
+    <v-text-field v-model="l" label="Left" :disabled="(l === 'auto')" dense/>
     <input type="checkbox" :checked="!isNaN(parseInt(l))" @change="onCheckChanges('left')"/>
   </div>
 
   <div v-if="hasPos" class="element-set element-set__left">
-    <mcw-textfield v-model="b" label="Bottom" :disabled="(b === 'auto')" dense/>
+    <v-text-field v-model="b" label="Bottom" :disabled="(b === 'auto')" dense/>
     <input type="checkbox" :checked="!isNaN(parseInt(b))" @change="onCheckChanges('bottom')"/>
   </div>
 
   <div v-if="hasPos" class="element-set element-set__right">
-    <mcw-textfield v-model="r" label="Right" :disabled="(r === 'auto')" dense/>
+    <v-text-field v-model="r" label="Right" :disabled="(r === 'auto')" dense/>
     <input type="checkbox" :checked="!isNaN(parseInt(r))" @change="onCheckChanges('right')"/>
   </div>
 </div>

@@ -4,41 +4,79 @@
       <div v-for="(page, pageIndex) in projectPages" :key="page.id"
            :class="{active: (page.id === activePage.id)}"
            @click="changePageIfNeeded(page)"
-        >
+      >
         <li v-tooltip.right="{content: page.name, delay: 0}" class="pages-list__item">
           <span class="pages-list-item__start-detail">
             <icon v-if="pageIndex === 0" v-bind="home"
-              :color="(page.id === activePage.id)?'rgba(0,0,0,.87)':'rgba(0,0,0,.54)'">
+                  :color="(page.id === activePage.id)?'rgba(0,0,0,.87)':'rgba(0,0,0,.54)'">
             </icon>
             <icon v-else v-bind="page"
-              :color="(page.id === activePage.id)?'rgba(0,0,0,.87)':'rgba(0,0,0,.54)'">
+                  :color="(page.id === activePage.id)?'rgba(0,0,0,.87)':'rgba(0,0,0,.54)'">
             </icon>
           </span>
 
           <div>
-            <span class="pages-list-item__title">{{page.name}}</span>
-            <span class="pages-list-item__subtitle" v-show="(page.id === activePage.id)" :title="page.path">{{page.path}}</span>
+            <span class="pages-list-item__title">{{ page.name }}</span>
+            <span class="pages-list-item__subtitle" v-show="(page.id === activePage.id)"
+                  :title="page.path">{{ page.path }}</span>
           </div>
 
           <span class="pages-list-item__end-detail">
-            <mcw-menu-anchor v-show="(page.id === activePage.id)">
-              <icon v-bind="more_vert" @click.native="showOptsMenu(page)"></icon>
+            <v-row>
+              <v-menu
+                bottom
+                origin="center center"
+                transition="scale-transition"
+                v-show="(page.id === activePage.id)"
+              >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            icon
+            v-bind="attrs"
+            v-on="on"
+            @click.native="showOptsMenu(page)"
+          >
+            <icon v-bind="more_vert"></icon>
+          </v-btn>
+        </template>
 
-              <mcw-menu :ref="'menu-'+page.id" @select="(selected)=>onSelect(selected, pageIndex)">
-                <mcw-menu-item>Rename page</mcw-menu-item>
-                <mcw-menu-item>Duplicate page</mcw-menu-item>
-<!--                <mcw-divider></mcw-divider>-->
-                <mcw-menu-item :disabled="(projectPages.length === 1)">Delete page</mcw-menu-item>
-              </mcw-menu>
-            </mcw-menu-anchor>
+        <v-list onselect="(selected) => onSelect(selected, pageIndex)">
+          <v-list-item key="0">
+            <v-list-item-title>
+              Rename page
+            </v-list-item-title>
+          </v-list-item>
+          <v-divider></v-divider>
+          <v-list-item key="1">
+            <v-list-item-title>
+              Duplicate page
+            </v-list-item-title>
+          </v-list-item>
+          <v-divider></v-divider>
+          <v-list-item :disabled="(projectPages.length === 1)">
+            <v-list-item-title>
+              Delete page
+            </v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+            </v-row>
+<!--            <mcw-menu-anchor v-show="(page.id === activePage.id)">-->
+<!--              <mcw-menu :ref="'menu-'+page.id" @select="(selected)=>onSelect(selected, pageIndex)">-->
+<!--                <mcw-menu-item>Rename page</mcw-menu-item>-->
+<!--                <mcw-menu-item>Duplicate page</mcw-menu-item>-->
+<!--                                <mcw-divider></mcw-divider>-->
+<!--                <mcw-menu-item :disabled="(projectPages.length === 1)">Delete page</mcw-menu-item>-->
+<!--              </mcw-menu>-->
+<!--            </mcw-menu-anchor>-->
           </span>
         </li>
       </div>
     </ul>
 
-    <mcw-fab class="new-page-btn" @click="_togglePageDialog({isOpen: true, isNew: true})">
+    <v-btn class="new-page-btn" @click="_togglePageDialog({isOpen: true, isNew: true})">
       <icon v-bind="add_page"></icon>
-    </mcw-fab>
+    </v-btn>
   </div>
 </template>
 
@@ -74,7 +112,10 @@ export default {
 
       switch (selected.index) {
         case EDIT:
-          this._togglePageDialog({ isOpen: true, isNew: false })
+          this._togglePageDialog({
+            isOpen: true,
+            isNew: false
+          })
           break
         case DUPLICATE:
           this._clearSelectedElements()
@@ -168,47 +209,52 @@ export default {
   justify-content: flex-start;
   height: 48px;
 }
-  .pages-list-item__start-detail {
-    width: 24px;
-    height: 24px;
-    margin-left: 0;
-    margin-right: 32px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .pages-list-item__end-detail {
-    width: 24px;
-    height: 24px;
-    margin-left: auto;
-    margin-right: 0;
-  }
 
-  .pages-list-item__title,
-  .pages-list-item__subtitle {
-    width: 115px;
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .pages-list-item__subtitle {
-    font-size: 0.76rem;
-    margin-bottom: 4px;
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    line-height: 1.25rem;
-  }
-  .pages-list-item__title {
-    color: rgba(0,0,0,.38);
-  }
+.pages-list-item__start-detail {
+  width: 24px;
+  height: 24px;
+  margin-left: 0;
+  margin-right: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pages-list-item__end-detail {
+  width: 24px;
+  height: 24px;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.pages-list-item__title,
+.pages-list-item__subtitle {
+  width: 115px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pages-list-item__subtitle {
+  font-size: 0.76rem;
+  margin-bottom: 4px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 1.25rem;
+}
+
+.pages-list-item__title {
+  color: rgba(0, 0, 0, .38);
+}
 
 .pages-list__item:hover .pages-list-item__title,
 .pages-list-item__subtitle {
-  color: rgba(0,0,0,.54);
+  color: rgba(0, 0, 0, .54);
 }
+
 .active .pages-list__item .pages-list-item__title,
 .active .pages-list__item:hover .pages-list-item__title {
-  color: rgba(0,0,0,.87);
+  color: rgba(0, 0, 0, .87);
 }
 
 .new-page-btn {

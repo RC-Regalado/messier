@@ -32,11 +32,11 @@
   <menu-toggle menuHeader="Material props" :hidden="!Object.keys(att).length">
     <div class="menu">
       <div v-for="(item, key) in att" :key="key">
-        <mcw-checkbox v-if="typeof item === 'boolean'"
+        <v-checkbox v-if="typeof item === 'boolean'"
           class="text-item"
           :label="key" v-model="att[key]"
           @change="onAttrsChanges(key, att[key])">
-        </mcw-checkbox>
+        </v-checkbox>
 
         <slider v-else-if="typeof item === 'number'"
           :label="key"
@@ -47,7 +47,7 @@
           @change="currentValue => onAttrsChanges(key, currentValue)">
         </slider>
 
-        <mcw-textfield v-else
+        <v-text-field v-else
           class="text-item" :ref="att[key]"
           :label="key" v-model="att[key]" dense
           @blur="onAttrsChanges(key, att[key])"/>
@@ -92,7 +92,7 @@
         </optgroup>
       </icon-select>
 
-      <mcw-textfield class="text-item" v-model="txt" label="Text" dense
+      <v-text-field class="text-item" v-model="txt" label="Text" dense
         @keyup.native="e => emitChanges('text', e.target.value)"/>
     </div>
   </menu-toggle>

@@ -121,6 +121,7 @@ export default {
 
       const height = getComputedProp('height', element, this.page)
       const width = getComputedProp('width', element, this.page)
+      this.$el.getAttributeNames()
       let top = e.pageY + mainContainer.scrollTop - mainContainer.offsetTop - this.$el.offsetTop - (height / 2)
       let left = e.pageX + mainContainer.scrollLeft - mainContainer.offsetLeft - this.$el.offsetLeft - (width / 2)
 
@@ -142,8 +143,8 @@ export default {
       this.page.children.forEach(childEl => {
         const child = (childEl.global) ? { ...childEl, ...this.getComponentRef(childEl), id: childEl.id } : childEl
 
-        const childTop = getComputedProp('top', child)
-        const childLeft = getComputedProp('left', child)
+        const childTop = getComputedProp('top', child, this.page)
+        const childLeft = getComputedProp('left', child, this.page)
         const childBottom = getComputedProp('height', child, this.page) + childTop
         const childRight = getComputedProp('width', child, this.page) + childLeft
 
@@ -209,13 +210,13 @@ export default {
     },
 
     movingHandler (absMouseX, absMouseY) {
-      this.dropContainer = this.getContaineggOnPoint(absMouseX, absMouseY)
+      this.dropContainer = this.getContainerOnPoint(absMouseX, absMouseY)
       this.toggleDroppableCursor(!!this.dropContainer)
     },
 
     moveStopHandler (moveStopData) {
-      const containegg = this.getContaineggOnPoint(moveStopData.absMouseX, moveStopData.absMouseY)
-      const parentId = containegg ? containegg.id : null
+      const container = this.getContainerOnPoint(moveStopData.absMouseX, moveStopData.absMouseY)
+      const parentId = container ? container.id : null
 
       moveStopData.moveElData.map(moveData => this.moveElement({
         ...moveData,
@@ -230,7 +231,7 @@ export default {
       this.dropContainer = null
     },
 
-    getContaineggOnPoint (x, y) {
+    getContainerOnPoint (x, y) {
       const movingEggs = this.selectedElements
       const parentsIds = movingEggs.map(egg => egg.id.substring(0, egg.id.lastIndexOf('.')))
       const commonParentId = parentsIds.every((val, i, arr) => val === arr[0]) ? parentsIds[0] : null
@@ -240,7 +241,7 @@ export default {
         if (el.id === commonParentId) return null
         if ((el.dataset.mrContainer) ||
           (
-            (el.dataset.containegg) &&
+            (el.dataset.container) &&
             (!el.dataset.componegg) &&
             (movingEggs.every(egg => !el.id.includes(egg.id)))
           )

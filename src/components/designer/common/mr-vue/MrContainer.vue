@@ -87,6 +87,7 @@ export default {
     mouseUpHandler (e) {
       console.log(e)
       // Saves the scroll position before giving focus and sets it back after focus
+      console.log('RC: ' + this.$el)
       const mainContainer = document.getElementById('main')
       const currentScroll = mainContainer.scrollTop
       this.$el.focus()
@@ -199,8 +200,8 @@ export default {
       const elCompStyle = window.getComputedStyle(el)
 
       // Re-set height and width on move to preserve dimensions (due addition of bottom/right props)
-      this.el.style.height = el.style.height
-      this.el.style.width = el.style.width
+      // el.style.height = el.style.height
+      // el.style.width = el.style.width
 
       el.style.top = (el.style.top !== 'auto')
         ? this.fixPosition(el, parseInt(elCompStyle.top) + Math.round(offY / this.zoom), 'top') + 'px'

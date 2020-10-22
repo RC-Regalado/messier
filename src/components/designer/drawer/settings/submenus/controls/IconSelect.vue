@@ -6,7 +6,7 @@
           <slot></slot>
         </select>
       </label>
-      <icon v-show="(icon !== '')" v-bind="icon_data" color="rgba(0,0,0,.87)"></icon>
+<!--      <icon v-show="(icon !== '')" :data="icon" v-bind="icon_data" color="rgba(0,0,0,.87)"></icon>-->
       <div class="material-select__bottom-line"></div>
     </div>
   </div>
@@ -23,13 +23,12 @@ export default {
       type: String
     },
     icon: {
-      type: String
+      type: Object
     },
     icon_data: {
       type: Object,
       required: false,
       default: () => ({
-        data: this.icon,
         width: 22,
         height: 22
       })

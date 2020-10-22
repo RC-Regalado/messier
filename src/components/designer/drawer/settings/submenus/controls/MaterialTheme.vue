@@ -1,31 +1,31 @@
 <template>
   <div class="material-theme__wrapper">
     <div class="material-theme">
-      <icon v-bind="reset_color"
-            @click.native="$emit('change', {prop: '--mdc-theme-primary', value: 'inherit'})">
-      </icon>
+      <v-btn text @click.native="$emit('change', {prop: '--mdc-theme-primary', value: 'inherit'})">
+        <icon v-bind="reset_color"></icon>
+      </v-btn>
       <color-picker label="Primary color"
-                    icon="system/editor/color"
+                    :data="assets.color"
                     :color="primary" class="material-theme__color-picker"
                     @input="newColor => $emit('change', {prop: '--mdc-theme-primary', value: newColor})">
       </color-picker>
     </div>
 
     <div class="material-theme">
-      <svg v-bind="reset_color"
-           @click.native="$emit('change', {prop: '--mdc-theme-secondary', value: 'inherit'})">
-      </svg>
+      <v-btn text @click.native="$emit('change', {prop: '--mdc-theme-secondary', value: 'inherit'})">
+        <icon v-bind="reset_color"></icon>
+      </v-btn>
       <color-picker label="Secondary color"
                     :icon="color_2"
-                        :color="secondary" class="material-theme__color-picker"
+                    :color="secondary" class="material-theme__color-picker"
                     @input="newColor => $emit('change', {prop: '--mdc-theme-secondary', value: newColor})">
       </color-picker>
     </div>
 
     <div class="material-theme">
-      <icon v-bind="reset_color"
-            @click.native="$emit('change', {prop: '--mdc-theme-background', value: 'inherit'})">
-      </icon>
+      <v-btn text @click.native="$emit('change', {prop: '--mdc-theme-background', value: 'inherit'})">
+        <icon v-bind="reset_color"></icon>
+      </v-btn>
       <color-picker label="Background color"
                     :icon="bg"
                     :color="background" class="material-theme__color-picker"
@@ -59,7 +59,8 @@ export default {
   },
   data: () => ({
     bg: assets.bg_color,
-    color_2: assets.color_2
+    color_2: assets.color_2,
+    assets: assets
   })
 }
 </script>
