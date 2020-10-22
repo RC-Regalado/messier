@@ -1,6 +1,6 @@
 /*
   Components from external libraries (ie. vue-mdc-adapter):
-  - PARENT -> external, componegg, egglement
+  - PARENT -> external, component, element
   - CHILDREN -> (none)
  */
 const materialComponents = [
@@ -13,17 +13,17 @@ const materialComponents = [
     type: 'mdc-drawer',
     dependencies: [
       {
-        name: 'vue-mdc-adapter',
-        version: '^0.15.3',
+        name: 'vuetify',
+        version: '^2.2.11',
         imports: [
-          ['VueMDCAdapter', 'vue-mdc-adapter'],
-          'https://unpkg.com/vue-mdc-adapter@^0.15.3/dist/vue-mdc-adapter.min.css'
+          ['vuetify'],
+          'https://registry.npmjs.org/vuetify/-/vuetify-2.3.15.tgz'
         ]
       }
     ],
     external: true,
-    componegg: true,
-    egglement: true,
+    component: true,
+    element: true,
     top: 0,
     left: 0,
     height: '100%',
@@ -92,8 +92,8 @@ const materialComponents = [
       }
     ],
     external: true,
-    componegg: true,
-    egglement: true,
+    component: true,
+    element: true,
     height: 64,
     width: '100%',
     minHeight: 56,
@@ -147,8 +147,8 @@ const materialComponents = [
       }
     ],
     external: true,
-    componegg: true,
-    egglement: true,
+    component: true,
+    element: true,
     height: 56,
     width: 170,
     minHeight: 56,
@@ -209,8 +209,8 @@ const materialComponents = [
       }
     ],
     external: true,
-    componegg: true,
-    egglement: true,
+    component: true,
+    element: true,
     height: 40,
     width: 155,
     minHeight: 32,
@@ -244,8 +244,8 @@ const materialComponents = [
       }
     ],
     external: true,
-    componegg: true,
-    egglement: true,
+    component: true,
+    element: true,
     height: 310,
     minHeight: 230,
     width: 300,
@@ -315,8 +315,8 @@ const materialComponents = [
       }
     ],
     external: true,
-    componegg: true,
-    egglement: true,
+    component: true,
+    element: true,
     height: 163,
     width: 163,
     minHeight: 63,
@@ -375,8 +375,8 @@ const materialComponents = [
       }
     ],
     external: true,
-    componegg: true,
-    egglement: true,
+    component: true,
+    element: true,
     text: 'mdcButton',
     height: 36,
     width: 120,
@@ -412,8 +412,8 @@ const materialComponents = [
       }
     ],
     external: true,
-    componegg: true,
-    egglement: true,
+    component: true,
+    element: true,
     height: 56,
     width: 56,
     minHeight: 40,
@@ -443,8 +443,8 @@ const materialComponents = [
       }
     ],
     external: true,
-    componegg: true,
-    egglement: true,
+    component: true,
+    element: true,
     height: 40,
     width: 155,
     minHeight: 32,
@@ -478,8 +478,8 @@ const materialComponents = [
       }
     ],
     external: true,
-    componegg: true,
-    egglement: true,
+    component: true,
+    element: true,
     height: 3,
     width: '100%',
     minHeight: 1,
@@ -514,8 +514,8 @@ const materialComponents = [
       }
     ],
     external: true,
-    componegg: true,
-    egglement: true,
+    component: true,
+    element: true,
     height: 46,
     width: 130,
     attrs: {
@@ -546,8 +546,8 @@ const materialComponents = [
       }
     ],
     external: true,
-    componegg: true,
-    egglement: true,
+    component: true,
+    element: true,
     height: 56,
     width: 120,
     minHeight: 56,
