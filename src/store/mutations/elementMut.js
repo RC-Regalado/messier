@@ -2,51 +2,51 @@ import types from '@/store/types'
 
 const commonElementMutations = {
 /**
- * Adds the passed egglement to the parent.children array
+ * Adds the passed element to the parent.children array
  *
- * @param {object} payload.parent : Parent of the new egglement
- * @param {object} payload.egglement : New egglement to save
+ * @param {object} payload.parent : Parent of the new element
+ * @param {object} payload.element : New element to save
  */
-  [types.createEgglement]: function (state, payload) {
-    payload.parent.children.push(payload.egglement)
+  [types.createElement]: function (state, payload) {
+    payload.parent.children.push(payload.element)
   },
 
   /**
- * Updates the passed egglement with the defined new values
+ * Updates the passed element with the defined new values
  *
- * @param {object} payload.egglement : Egglement to update
- * @param {number|null} [payload.left] : New egglement's left position
- * @param {number|null} [payload.top] : New egglement's top position
- * @param {number|string|null} [payload.zIndex] : New egglement's zIndex order
- * @param {number|string|null} [payload.height] : New egglement's height
- * @param {number|string|null} [payload.width] : New egglement's width
- * @param {string|null} [payload.text] : New egglement's text child
- * @param {object|null} [payload.classes] : New egglement's classes
- * @param {object|null} [payload.styles] : New egglement's styles
- * @param {object|null} [payload.attrs] : New egglement's attributes
+ * @param {object} payload.element : Element to update
+ * @param {number|null} [payload.left] : New element's left position
+ * @param {number|null} [payload.top] : New element's top position
+ * @param {number|string|null} [payload.zIndex] : New element's zIndex order
+ * @param {number|string|null} [payload.height] : New element's height
+ * @param {number|string|null} [payload.width] : New element's width
+ * @param {string|null} [payload.text] : New element's text child
+ * @param {object|null} [payload.classes] : New element's classes
+ * @param {object|null} [payload.styles] : New element's styles
+ * @param {object|null} [payload.attrs] : New element's attributes
  */
-  [types.updateEgglement]: function (state, payload) {
-    if ((typeof payload.left !== 'undefined') && (payload.left !== null)) payload.egglement.left = payload.left
-    if ((typeof payload.top !== 'undefined') && (payload.top !== null)) payload.egglement.top = payload.top
-    if ((typeof payload.right !== 'undefined') && (payload.right !== null)) payload.egglement.right = payload.right
-    if ((typeof payload.bottom !== 'undefined') && (payload.bottom !== null)) payload.egglement.bottom = payload.bottom
-    if ((typeof payload.zIndex !== 'undefined') && (payload.zIndex !== null)) payload.egglement.zIndex = payload.zIndex
-    if ((typeof payload.height !== 'undefined') && (payload.height !== null)) payload.egglement.height = payload.height
-    if ((typeof payload.width !== 'undefined') && (payload.width !== null)) payload.egglement.width = payload.width
-    if ((typeof payload.text !== 'undefined') && (payload.text !== null)) payload.egglement.text = payload.text
-    if (payload.classes) payload.egglement.classes = payload.classes
-    if (payload.styles) payload.egglement.styles = payload.styles
-    if (payload.attrs) payload.egglement.attrs = payload.attrs
+  [types.updateElement]: function (state, payload) {
+    if ((typeof payload.left !== 'undefined') && (payload.left !== null)) payload.element.left = payload.left
+    if ((typeof payload.top !== 'undefined') && (payload.top !== null)) payload.element.top = payload.top
+    if ((typeof payload.right !== 'undefined') && (payload.right !== null)) payload.element.right = payload.right
+    if ((typeof payload.bottom !== 'undefined') && (payload.bottom !== null)) payload.element.bottom = payload.bottom
+    if ((typeof payload.zIndex !== 'undefined') && (payload.zIndex !== null)) payload.element.zIndex = payload.zIndex
+    if ((typeof payload.height !== 'undefined') && (payload.height !== null)) payload.element.height = payload.height
+    if ((typeof payload.width !== 'undefined') && (payload.width !== null)) payload.element.width = payload.width
+    if ((typeof payload.text !== 'undefined') && (payload.text !== null)) payload.element.text = payload.text
+    if (payload.classes) payload.element.classes = payload.classes
+    if (payload.styles) payload.element.styles = payload.styles
+    if (payload.attrs) payload.element.attrs = payload.attrs
   },
 
   /**
- * Removes the egglement under the specified index
- * from the passed parent egglement (or page)
+ * Removes the element under the specified index
+ * from the passed parent element (or page)
  *
- * @param {object} payload.parent : Parent container (egglement or page)
- * @param {number} payload.eggIndex : Egglement's index
+ * @param {object} payload.parent : Parent container (element or page)
+ * @param {number} payload.eggIndex : Element's index
  */
-  [types.deleteEgglement]: function (state, payload) {
+  [types.deleteElement]: function (state, payload) {
     payload.parent.children.splice(payload.eggIndex, 1)
   }
 }
@@ -58,7 +58,7 @@ const commonElementMutations = {
  *******************************************************************/
 const internalElementMutations = {
 /**
- * Resets the selectedElements aray
+ * Resets the selectedElements array
  */
   [types._clearSelectedElements]: function (state) {
     state.app.selectedElements = []
