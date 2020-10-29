@@ -1,7 +1,7 @@
 <template>
   <div class="menus-wrapper">
     <div class="selection-title__wrapper" :title="selectionTitle">
-      <icon :icon="'system/elements/'+selectionIcon" width="22" height="22" :original="true"></icon>
+      <icon :icon="assets[selectionIcon]" width="22" height="22" :original="true"></icon>
       <span class="selection-title">{{selectionTitle}}</span>
     </div>
 
@@ -41,7 +41,7 @@
 import cloneDeep from 'clone-deep'
 import { mapState, mapMutations } from 'vuex'
 import { updatePage, updateElement } from '@/store/types'
-// import assets from '@/assets'
+import assets from '@/assets'
 
 import PageSettings from './submenus/PageSettings.vue'
 import ElementSettings from './submenus/ElementSettings.vue'
@@ -69,7 +69,8 @@ export default {
       attrs: {},
       styles: {},
       classes: {},
-      webSafeFonts: WebSafeFonts
+      webSafeFonts: WebSafeFonts,
+      assets: assets
     }
   },
   computed: {
@@ -89,7 +90,7 @@ export default {
             ? 'globe'
             : (this.selectedElements[0].external)
               ? 'mdc'
-              : (this.selectedElements[0].componegg)
+              : (this.selectedElements[0].component)
                 ? 'component'
                 : this.selectedElements[0].name.toLowerCase()
     },
@@ -102,7 +103,7 @@ export default {
             ? 'global'
             : (this.selectedElements[0].external)
               ? 'mdc'
-              : (this.selectedElements[0].componegg)
+              : (this.selectedElements[0].component)
                 ? 'component'
                 : 'element'
     },

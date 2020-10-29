@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Designer from '../views/Designer'
+import Editor from '../views/Editor'
 
 Vue.use(VueRouter)
 
@@ -13,8 +14,13 @@ const routes = [
   },
   {
     path: '/designer',
-    name: 'Designer',
+    name: 'designer',
     component: Designer
+  },
+  {
+    path: '/editor',
+    name: 'editor',
+    component: Editor
   },
   {
     path: '/about',

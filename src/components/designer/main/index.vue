@@ -58,7 +58,7 @@ export default {
 
 .zoom-menu {
   bottom: 24px;
-  left: 24px;
+  right: 5em;
   padding: 0 6px;
   position: fixed;
 }

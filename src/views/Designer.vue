@@ -4,19 +4,20 @@
       <v-progress-linear v-show="loading" class="linear-loader" accent indeterminate></v-progress-linear>
       <header101 :scroll0="notScrolled"></header101>
 
-      <drawer></drawer>
-
+      <div>
+        <drawer></drawer>
+      </div>
       <main id="main" role="main" @scroll="scrollFunction">
         <main101></main101>
       </main>
 
-            <page-dialog></page-dialog>
-            <load-dialog></load-dialog>
-            <upload-dialog></upload-dialog>
-            <confirm-dialog></confirm-dialog>
+      <page-dialog></page-dialog>
+      <load-dialog></load-dialog>
+      <upload-dialog></upload-dialog>
+      <confirm-dialog></confirm-dialog>
 
-            <block-loader></block-loader>
-            <v-snackbar :dismisses-on-action="false"/>
+      <block-loader></block-loader>
+      <v-snackbar :dismisses-on-action="false"/>
     </div>
   </div>
 </template>
@@ -25,7 +26,7 @@
 import { mapState, mapActions } from 'vuex'
 import { checkAuth, checkLastSaved, rebaseSelectedElements } from '@/store/types'
 
-import Header101 from '@/components/designer/header'
+import Header101 from '@/components/common/header'
 import Drawer from '@/components/designer/drawer'
 import Main101 from '@/components/designer/main'
 import BlockLoader from '@/components/designer/common/loader/BlockLoader'
@@ -36,7 +37,16 @@ import ConfirmDialog from '@/components/designer/dialogs/ConfirmDialog'
 
 export default {
   name: 'designer',
-  components: { Header101, Main101, BlockLoader, PageDialog, LoadDialog, UploadDialog, ConfirmDialog, Drawer },
+  components: {
+    Header101,
+    Main101,
+    BlockLoader,
+    PageDialog,
+    LoadDialog,
+    UploadDialog,
+    ConfirmDialog,
+    Drawer
+  },
   data: function () {
     return {
       notScrolled: true
@@ -67,7 +77,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .layout-container {
   position: absolute;
   width: 100%;
@@ -90,7 +100,7 @@ export default {
   overflow-y: auto;
   overflow-x: auto;
   flex-grow: 1;
-  margin-right: 240px;
+  margin-left: 260px;
 }
 
 /* IN DEVICES SMALLER THAN 1024px -> NO DRAWER (so remove margins) */

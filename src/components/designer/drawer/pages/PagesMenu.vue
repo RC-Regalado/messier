@@ -20,55 +20,43 @@
             <span class="pages-list-item__subtitle" v-show="(page.id === activePage.id)"
                   :title="page.path">{{ page.path }}</span>
           </div>
-
           <span class="pages-list-item__end-detail">
-            <v-row>
-              <v-menu
-                bottom
-                origin="center center"
-                transition="scale-transition"
-                v-show="(page.id === activePage.id)"
-              >
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            icon
-            v-bind="attrs"
-            v-on="on"
-            @click.native="showOptsMenu(page)"
-          >
-            <icon v-bind="more_vert"></icon>
-          </v-btn>
-        </template>
-
-        <v-list onselect="(selected) => onSelect(selected, pageIndex)">
-          <v-list-item key="0">
-            <v-list-item-title>
-              Rename page
-            </v-list-item-title>
-          </v-list-item>
-          <v-divider></v-divider>
-          <v-list-item key="1">
-            <v-list-item-title>
-              Duplicate page
-            </v-list-item-title>
-          </v-list-item>
-          <v-divider></v-divider>
-          <v-list-item :disabled="(projectPages.length === 1)">
-            <v-list-item-title>
-              Delete page
-            </v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
-            </v-row>
-<!--            <mcw-menu-anchor v-show="(page.id === activePage.id)">-->
-<!--              <mcw-menu :ref="'menu-'+page.id" @select="(selected)=>onSelect(selected, pageIndex)">-->
-<!--                <mcw-menu-item>Rename page</mcw-menu-item>-->
-<!--                <mcw-menu-item>Duplicate page</mcw-menu-item>-->
-<!--                                <mcw-divider></mcw-divider>-->
-<!--                <mcw-menu-item :disabled="(projectPages.length === 1)">Delete page</mcw-menu-item>-->
-<!--              </mcw-menu>-->
-<!--            </mcw-menu-anchor>-->
+            <v-menu
+              bottom
+              origin="center center"
+              transition="scale-transition"
+              v-show="(page.id === activePage.id)"
+            >
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn
+                  icon
+                  v-bind="attrs"
+                  v-on="on"
+                  @click.native="showOptsMenu(page)"
+                >
+                  <icon v-bind="more_vert"></icon>
+                </v-btn>
+              </template>
+              <v-list>
+                <v-list-item key="0">
+                  <v-btn text @click.native="onSelect(0, pageIndex)">
+                    Rename page
+                  </v-btn>
+                </v-list-item>
+                <v-divider></v-divider>
+                <v-list-item key="1">
+                  <v-list-item-title>
+                    Duplicate page
+                  </v-list-item-title>
+                </v-list-item>
+                <v-divider></v-divider>
+                <v-list-item :disabled="(projectPages.length === 1)">
+                  <v-list-item-title>
+                    Delete page
+                  </v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
           </span>
         </li>
       </div>
@@ -102,7 +90,7 @@ export default {
 
     showOptsMenu (page) {
       this.changePageIfNeeded(page)
-      this.$refs['menu-' + page.id][0].show()
+      // this.$refs['menu-' + page.id][0].show()
     },
 
     onSelect (selected, pageIndex) {
@@ -110,7 +98,7 @@ export default {
       const DUPLICATE = 1
       const DELETE = 2
 
-      switch (selected.index) {
+      switch (selected) {
         case EDIT:
           this._togglePageDialog({
             isOpen: true,
@@ -259,7 +247,7 @@ export default {
 
 .new-page-btn {
   position: fixed;
-  right: 92px;
+  left: 92px;
   bottom: 32px;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="header theme--dark" :class="{'not-scrolled': scroll0}">
+  <div :style="{'margin-left': margin}" class="header theme--dark" :class="{'not-scrolled': scroll0}">
     <a class="home-btn" href="#" target="_blank">
       <!--    <svgicon icon="product/vuegg"></svgicon>-->
     </a>
@@ -7,6 +7,7 @@
     <input v-model="tmpProjectTitle" class="title-input" @blur="onTitleBlur" title="Project title" placeholder="Title">
     <div class="spacer"></div>
     <action-bar></action-bar>
+
     <user-menu></user-menu>
   </div>
 </template>
@@ -14,7 +15,7 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 import { updateProject } from '@/store/types'
-import UserMenu from '@/components/designer/header/UserMenu'
+import UserMenu from '@/components/common/header/UserMenu'
 import ActionBar from './ActionBar'
 
 export default {
@@ -23,7 +24,15 @@ export default {
     ActionBar,
     UserMenu
   },
-  props: ['scroll0'],
+  props: {
+    scroll0: {
+      type: Boolean
+    },
+    margin: {
+      type: String,
+      default: '250px'
+    }
+  },
   data: function () {
     return {
       tmpProjectTitle: ''
@@ -60,7 +69,6 @@ export default {
   width: calc(100% - 240px);
   color: rgba(0, 0, 0, 0.66);
   padding: 0 25px 0 25px;
-  margin-right: 240px;
   border: none;
   display: flex;
   flex-shrink: 0;

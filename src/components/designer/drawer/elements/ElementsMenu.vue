@@ -15,20 +15,20 @@
       </div>
     </menu-toggle>
 
-<!--    <menu-toggle menuHeader="Material Design">-->
-<!--      <div class="el-menu">-->
-<!--        <div class="el-menu__el" :key="mdComp.name"-->
-<!--          v-for="mdComp in mdComponents"-->
-<!--          :title="mdComp.name"-->
-<!--          draggable="true"-->
-<!--          @dragstart="e => dragstartHandler(e, mdComp)"-->
-<!--          @click="e => addItemToStage(e, mdComp)"-->
-<!--        >-->
-<!--          <icon :data="assets[mdComp.iconName]" width="24" height="24" color="rgba(0,0,0,.87)"></icon>-->
-<!--          <span>{{mdComp.displayName || mdComp.name}}</span>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </menu-toggle>-->
+    <menu-toggle menuHeader="Material Design">
+      <div class="el-menu">
+        <div class="el-menu__el" :key="mdComp.name"
+          v-for="mdComp in mdComponents"
+          :title="mdComp.name"
+          draggable="true"
+          @dragstart="e => dragstartHandler(e, mdComp)"
+          @click="e => addItemToStage(e, mdComp)"
+        >
+          <icon :data="assets[mdComp.iconName]" width="24" height="24" color="rgba(0,0,0,.87)"></icon>
+          <span>{{mdComp.displayName || mdComp.name}}</span>
+        </div>
+      </div>
+    </menu-toggle>
   </div>
 </template>
 
@@ -40,8 +40,6 @@ import basicElements from '@/assets/BasicElements'
 import materialComponents from '@/assets/MaterialComponents'
 import MenuToggle from '@/components/designer/common/MenuToggle'
 import assets from '@/assets'
-// import mockComponents from '@/assets/MockComponents'
-// import '@/assets/icons/system/elements/'
 
 export default {
   name: 'elements-menu',

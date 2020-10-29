@@ -47,10 +47,10 @@ export default {
   },
   computed: {
     indiLeft () {
-      return this.activeTabX + 'px'
+      return (260 + (this.activeTabX + 80)) + 'px'
     },
     indiRight () {
-      return (240 - (this.activeTabX + 80)) + 'px'
+      return this.activeTabX + 'px'
     }
   },
   mounted: function () {
@@ -115,9 +115,8 @@ export default {
 <style scoped>
 .navigation {
   top: 0;
-  right: 0;
   z-index: 1005;
-  width: 240px;
+  width: 260px;
   height: 100%;
   max-height: 100%;
   background: #fafafa;

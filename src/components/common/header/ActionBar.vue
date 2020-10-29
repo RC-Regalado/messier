@@ -1,5 +1,18 @@
 <template>
   <div class="action-bar__wrapper">
+    <router-link :to="{name: 'designer'}">
+      <button v-tooltip="'Diseñador'" class="action-btn">
+        D
+      </button>
+    </router-link>
+    <router-link :to="{name: 'editor'}">
+      <button v-tooltip="'Editor'" class="action-btn">
+        E
+      </button>
+    </router-link>
+
+    <div class="separator"></div>
+
     <button v-if="isSyncing" title="syncing" :disabled="true" class="action-btn syncing">
       <icon :data="assets.sync" width="24" height="24" color="rgba(0,0,0,.38)"></icon>
     </button>
@@ -15,12 +28,6 @@
             :color="canRedo ? '#2b6a73' : 'rgba(0,0,0,.38)'">
       </icon>
     </button>
-
-    <!--    <router-link :to="{name: 'preview'}">-->
-    <!--      <button v-tooltip="'Preview'" class="action-btn">-->
-    <!--        <icon icon="system/actions/preview" width="24" height="24" color="#2b6a73"></icon>-->
-    <!--      </button>-->
-    <!--    </router-link>-->
 
     <div class="separator"></div>
 
