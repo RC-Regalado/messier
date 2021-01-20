@@ -27,6 +27,7 @@
     "@vue/cli-service": "~4.5.0",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/test-utils": "^1.0.3",
+    "axios": "^0.18.0",
     "babel-eslint": "^10.1.0",
     "bootstrap": "^4.5.2",
     "chromedriver": "^84.0.1",
