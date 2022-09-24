@@ -1,12 +1,12 @@
 <template>
   <div class="action-bar__wrapper">
     <button v-if="isSyncing" title="syncing" :disabled="true" class="action-btn syncing">
-      <v-icon :data="assets.sync" width="24" height="24" color="rgba(0,0,0,.38)" />
+      <img :src="assets.sync" width="24" height="24" color="rgba(0,0,0,.38)" />
     </button>
 
     <button v-tooltip="'Undo'" class="action-btn" :disabled="!canUndo" @click="$root.$emit('undo')">
-      <v-icon
-        :data="assets.undo"
+      <img
+        :src="assets.undo"
         width="24"
         height="24"
         :color="canUndo ? '#2b6a73' : 'rgba(0,0,0,.38)'"
@@ -14,19 +14,13 @@
     </button>
 
     <button v-tooltip="'Redo'" class="action-btn" :disabled="!canRedo" @click="$root.$emit('redo')">
-      <v-icon
-        :data="assets.redo"
+      <img
+        :src="assets.redo"
         width="24"
         height="24"
         :color="canRedo ? '#2b6a73' : 'rgba(0,0,0,.38)'"
       />
     </button>
-
-    <!--    <router-link :to="{name: 'preview'}">-->
-    <!--      <button v-tooltip="'Preview'" class="action-btn">-->
-    <!--        <v-icon v-icon="system/actions/preview" width="24" height="24" color="#2b6a73"></v-icon>-->
-    <!--      </button>-->
-    <!--    </router-link>-->
 
     <div class="separator" />
 
@@ -36,7 +30,7 @@
       :disabled="isLoading"
       @click="$root.$emit('open-confirm-dialog')"
     >
-      <v-icon :data="assets.a_delete" width="24" height="24" color="#2b6a73" />
+      <img :src="assets.a_delete" width="24" height="24" color="#2b6a73" />
     </button>
 
     <!--    <a>Hello</a>-->
@@ -53,7 +47,7 @@
             v-bind="attrs"
             v-on="on"
           >
-            <v-icon :data="assets.folder" width="32" heigth="32" color="#2b6a73" />
+            <img :src="assets.folder" width="32" heigth="32" color="#2b6a73" />
           </v-btn>
         </template>
 
@@ -86,7 +80,7 @@
             v-bind="attrs"
             v-on="on"
           >
-            <v-icon :data="assets.download" width="24" height="24" color="#2b6a73" />
+            <img :src="assets.download" width="24" height="24" color="#2b6a73" />
           </v-btn>
         </template>
 
@@ -117,23 +111,23 @@
       :disabled="!isLoggedIn || !hasChanges || (isLoggedIn && isLoading)"
       @click="$root.$emit('open-upload-dialog')"
     >
-      <v-icon
+      <img
         v-if="!isLoggedIn"
-        :data="assets.cloud_off"
+        :src="assets.cloud_off"
         width="24"
         height="24"
         color="rgba(0,0,0,.38)"
       />
-      <v-icon
+      <img
         v-else-if="hasChanges"
-        :data="assets.cloud_up"
+        :src="assets.cloud_up"
         width="24"
         height="24"
         color="#2b6a73"
       />
-      <v-icon
+      <img
         v-else
-        :data="assets.cloud_done"
+        :src="assets.cloud_done"
         width="24"
         height="24"
         color="rgba(0,0,0,.38)"

@@ -2,19 +2,19 @@
   <nav class="navigation">
     <div class="tab-bar">
       <a title="Elements" class="tab" @click="toggleTab('elements')">
-        <v-icon
+        <img
           v-bind="widgets"
           :color="showElements ? '#2b6a73' : 'rgba(0,0,0,.38)'"
         />
       </a>
       <a title="Settings" class="tab" @click="toggleTab('settings')">
-        <v-icon
+        <img
           v-bind="settings"
           :color="showSettings ? '#2b6a73' : 'rgba(0,0,0,.38)'"
         />
       </a>
       <a title="Pages" class="tab" @click="toggleTab('pages')">
-        <v-icon
+        <img
           v-bind="page"
           :color="showPages ? '#2b6a73' : 'rgba(0,0,0,.38)'"
         />
@@ -45,7 +45,7 @@ export default {
       type: Object,
       required: false,
       default: () => ({
-        data: assets.widgets,
+        src: assets.widgets,
         width: 24,
         height: 24
       })
@@ -54,7 +54,7 @@ export default {
       type: Object,
       required: false,
       default: () => ({
-        data: assets.settings,
+        src: assets.settings,
         width: 24,
         height: 24
       })
@@ -63,7 +63,7 @@ export default {
       type: Object,
       required: false,
       default: () => ({
-        data: assets.page,
+        src: assets.page,
         width: 24,
         height: 24
       })

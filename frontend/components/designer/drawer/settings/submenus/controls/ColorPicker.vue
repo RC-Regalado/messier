@@ -5,21 +5,25 @@
         <div class="anchor__color-display" :style="anchorStyle"></div>
         <span class="anchor__title" v-show="(label !== '')">{{label}}</span>
       </div>
-      <color-chrome class="color-picker__menu" v-show="isPickerOpen"
-                    :value="color" @input="newColor => onColorChange(newColor)">
-      </color-chrome>
+
+      <client-only>
+        <photoshop-picker class="color-picker__menu" v-show="isPickerOpen"
+                          :value="color" @input="newColor => onColorChange(newColor)">
+        </photoshop-picker>
+      </client-only>
     </div>
-    <icon v-show="(icon !== '')" :data="icon" v-bind="icon_data" color="rgba(0,0,0,.87)"></icon>
+
+    <v-icon v-show="(icon !== '')" :data="icon" v-bind="icon_data" color="rgba(0,0,0,.87)"></v-icon>
   </div>
 </template>
 
 <script>
 import tinycolor from 'tinycolor2'
-import { Chrome } from 'vue-color'
+import { Photoshop } from 'vue-color'
 
 export default {
   name: 'color-picker',
-  components: { 'color-chrome': Chrome },
+  components: { 'photoshop-picker': Photoshop },
   props: {
     color: { type: String, default: '#000000' },
     label: { type: String, default: '' },

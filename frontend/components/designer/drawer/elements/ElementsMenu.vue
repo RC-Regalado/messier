@@ -11,7 +11,8 @@
           @dragstart="e => dragstartHandler(e, element)"
           @click="e => addItemToStage(e, element)"
         >
-          <v-icon :data="assets[element.name]" width="24" height="24" color="rgba(0,0,0,.87)" />
+          <img :src="assets[element.name]" width="24" height="24" color="rgba(0,0,0,.87)" >
+          </img>
           <span>{{ element.displayName || element.name }}</span>
         </div>
       </div>

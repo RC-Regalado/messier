@@ -1,7 +1,7 @@
 <template>
   <div class="slider__wrapper" v-tooltip.left="{content: label + ' (' + currentValue + ')', delay: 0, offset: 0}">
     <v-slider :min="min" :max="max" :step="step" v-model="currentValue" layout-on="show-settings"/>
-    <icon v-show="(icon !== '')" :data="icon" color="rgba(0,0,0,.87)"></icon>
+    <v-icon v-show="(icon !== '')" :data="icon" color="rgba(0,0,0,.87)"></v-icon>
   </div>
 </template>
 
@@ -15,7 +15,7 @@ export default {
     max: { type: String, default: '1' },
     step: { type: String, default: null },
     label: { type: String, default: '' },
-    icon: { type: Object, default: () => ({}) },
+    icon: { type: String, default: () => ({}) },
     icon_data: {
       type: Object,
       required: false,

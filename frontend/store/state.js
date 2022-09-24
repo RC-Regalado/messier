@@ -10,4 +10,4 @@ import newState from '@/factories/stateFactory'
  * @type {object}
  * @see {@link https://vuex.vuejs.org/en/state.html|Vuex State}
  */
-export default newState()
+export default newState

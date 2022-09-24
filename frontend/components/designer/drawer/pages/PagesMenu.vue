@@ -9,12 +9,12 @@
       >
         <li v-tooltip.right="{content: page.name, delay: 0}" class="pages-list__item">
           <span class="pages-list-item__start-detail">
-            <v-icon
+            <img
               v-if="pageIndex === 0"
               v-bind="home"
               :color="(page.id === activePage.id)?'rgba(0,0,0,.87)':'rgba(0,0,0,.54)'"
             />
-            <v-icon
+            <img
               v-else
               v-bind="page"
               :color="(page.id === activePage.id)?'rgba(0,0,0,.87)':'rgba(0,0,0,.54)'"
@@ -45,7 +45,7 @@
                     v-on="on"
                     @click.native="showOptsMenu(page)"
                   >
-                    <v-icon v-bind="more_vert" />
+                    <img v-bind="more_vert" />
                   </v-btn>
                 </template>
 
@@ -76,7 +76,7 @@
     </ul>
 
     <v-btn class="new-page-btn" @click="_togglePageDialog({isOpen: true, isNew: true})">
-      <v-icon v-bind="add_page" />
+      <img v-bind="add_page" />
     </v-btn>
   </div>
 </template>
@@ -139,7 +139,7 @@ export default {
       type: Object,
       required: false,
       default: () => ({
-        data: assets.home,
+        src: assets.home,
         width: 24,
         height: 24
       })
@@ -148,7 +148,7 @@ export default {
       type: Object,
       required: false,
       default: () => ({
-        data: assets.page,
+        src: assets.page,
         width: 24,
         height: 24
       })
@@ -157,7 +157,7 @@ export default {
       type: Object,
       required: false,
       default: () => ({
-        data: assets.more_vert,
+        src: assets.more_vert,
         width: 24,
         height: 24
       })
@@ -166,7 +166,7 @@ export default {
       type: Object,
       required: false,
       default: () => ({
-        data: assets.add_page,
+        src: assets.add_page,
         width: 24,
         height: 24
       })
